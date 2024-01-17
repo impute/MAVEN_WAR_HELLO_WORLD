@@ -1,2 +1,2 @@
 [dev]
-192.168.1.215 ansible_user=root
+linuxclient1 ansible_user=root
