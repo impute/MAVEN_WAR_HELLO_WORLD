@@ -21,7 +21,7 @@
           - docker-buildx-plugin
           - docker-compose-plugin
           - epel-release
-          - python-pip
+          - python3-pip
         state: present    
         
     - name: Start Docker service using the systemd module
