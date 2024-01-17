@@ -35,7 +35,7 @@ pipeline{
                 sh "docker push imputed5/maven_war:1.0"
             }
         }
- /* 
+
       stage('Docker Deploy'){
             steps{
                 echo 'You should use the ansiblePlaybook syntax in order to call your playbook'
@@ -43,6 +43,5 @@ pipeline{
                 ansiblePlaybook credentialsId: 'docker-credentials', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
             }
         }        
-*/
     }
 }
