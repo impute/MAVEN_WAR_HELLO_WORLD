@@ -35,9 +35,9 @@
         state: present    
 
     - name: pull docker image    
-        docker_image:
-          name: imputed5/maven_war:1.0
-          source: pull
+      docker_image:
+        name: imputed5/maven_war:1.0
+        source: pull
           
     - name: create the container using docker_container
       docker_container:
