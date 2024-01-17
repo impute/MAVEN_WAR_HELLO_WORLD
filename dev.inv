@@ -1,4 +1,2 @@
 [dev]
-192.168.1.215
-192.168.1.25 ansible_user=parallels
-linuxclient1 ansible_ssh_host=192.168.1.215
+192.168.1.215 ansible_user=root
