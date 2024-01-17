@@ -12,8 +12,8 @@
   tasks:
     - name: Display a debug message
       debug:
-        msg: docker_username
+        msg: "{{ docker_username }}"
 
     - name: Display a debug message
       debug:
-        msg: docker_password        
+        msg: "{{ docker_password }}"
