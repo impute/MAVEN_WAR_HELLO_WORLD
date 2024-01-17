@@ -16,14 +16,14 @@ pipeline{
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
        }
-/*       
+   
       stage('Docker Build'){
             steps{
                 echo 'In this step you should build your docker image using the docker build command'
                 sh "docker build . -t imputed5/maven_war:1.0"
             }
         }
-        
+/*        
       stage('DockerHub Push'){
             steps{
                 echo 'Docker Login'
