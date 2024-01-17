@@ -4,10 +4,10 @@
   become_user: root
 
   vars:
-    docker_username: your-docker-username
-    docker_password: your-docker-password
-    docker_image: your-docker-image
-    docker_container_name: your-container-name
+    docker_username: "{{ docker_username }}"
+    docker_password: "{{ docker_password }}"
+    docker_image: maven_war:1.0
+    docker_container_name: maven_war
 
   tasks:
     - name: Install yum-utils (use the yum module)
