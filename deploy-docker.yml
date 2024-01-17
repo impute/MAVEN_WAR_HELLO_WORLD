@@ -43,6 +43,7 @@
       docker_container:
         name: maven_war
         image: imputed5/maven_war:1.0
+        auto_remove: true        
         state: started
         ports:
          - "8080:8080"
