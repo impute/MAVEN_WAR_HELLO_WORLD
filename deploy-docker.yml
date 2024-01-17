@@ -21,6 +21,9 @@
           - docker-buildx-plugin
           - docker-compose-plugin
           - epel-release
+          - python36
+          - python36-devel
+          - python36-setuptools
           - python3-pip
         state: present    
         
