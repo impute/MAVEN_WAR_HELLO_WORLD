@@ -4,27 +4,35 @@ pipeline{
       maven 'MVN_HOME'
     }
 
+    environment {
+        // Define the credential ID and the variable names
+        DOCKER_CREDENTIALS = credentials('docker-credentials')
+    }
+
     stages{
        stage('Maven Build') {
-         steps {
-           echo 'Here you should trigger a maven build of your application using either bat(windows) or sh(linux)'
-         }
+            steps {
+                echo 'Compile the source code'
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
        }
        
       stage('Docker Build'){
             steps{
                 echo 'In this step you should build your docker image using the docker build command'
-                echo 'So you need to build an image from the WAR that you generated previously'
-                echo 'Remember that starting point of your image should be tomcat in order to serve the application on the web'
+                sh "docker build . -t imputed5/maven_war:1.0"
             }
         }
         
       stage('DockerHub Push'){
             steps{
-                echo 'You should first login to your github account using the withCredentials synatx'
-                echo 'And for that you need to create the appropriate credentials to access the github account in Jenkins'
-                echo 'Then you need to push this image to the public registry dockerhub into your account'
-                echo 'Use the docker push command'
+                echo 'Docker Login'
+                script {
+                    // Log in to Docker
+                    sh "echo '${DOCKER_CREDENTIALS_PSW}' | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin"
+                }
+
+                sh "docker push imputed5/maven_war:1.0"
             }
         }
   
@@ -32,6 +40,7 @@ pipeline{
             steps{
                 echo 'You should use the ansiblePlaybook syntax in order to call your playbook'
                 echo 'But before that you need to create an agent in order to execute the playbook on the Ansible controle node machine'
+                ansiblePlaybook credentialsId: 'docker-credentials', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
             }
         }        
     }
