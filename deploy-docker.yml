@@ -34,7 +34,7 @@
         enabled: yes    
 
     - name: Install docker-py
-      pip:
+      pip3:
         name: docker
         state: present    
 
