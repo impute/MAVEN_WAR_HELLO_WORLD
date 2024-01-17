@@ -38,11 +38,6 @@
         name: docker
         executable: pip3
 
-    - name: Install docker-py
-      pip3:
-        name: docker
-        state: present    
-
     - name: pull docker image    
       docker_image:
         name: imputed5/maven_war:1.0
