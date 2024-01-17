@@ -10,11 +10,6 @@
     docker_container_name: maven_war
 
   tasks:
-    - name: Install yum-utils (use the yum module)
-      yum:
-        name: yum-utils
-        state: present    
-
     - name: Display a debug message
       debug:
         msg: "This is a debug message"
