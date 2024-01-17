@@ -12,4 +12,8 @@
   tasks:
     - name: Display a debug message
       debug:
-        msg: "This is a debug message"
+        msg: docker_username
+
+    - name: Display a debug message
+      debug:
+        msg: docker_password        
