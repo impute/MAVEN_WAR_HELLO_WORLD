@@ -26,6 +26,10 @@
           - containerd.io
           - docker-buildx-plugin
           - docker-compose-plugin
+          - python36
+          - python36-devel
+          - python36-setuptools
+          - docker-py
         state: present    
 
     - name: Start Docker service using the systemd module
@@ -44,3 +48,5 @@
         name: "{{ docker_container_name }}"
         image: "{{ docker_image }}"
         state: started
+        ports:
+         - "8080:8080"
