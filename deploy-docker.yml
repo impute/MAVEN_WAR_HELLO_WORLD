@@ -21,9 +21,6 @@
           - docker-buildx-plugin
           - docker-compose-plugin
           - epel-release
-          - python36
-          - python36-devel
-          - python36-setuptools
           - python3-pip
         state: present    
         
@@ -32,6 +29,14 @@
         name: docker
         state: started
         enabled: yes    
+
+    - name: Upgrade pip3
+      command: pip3 install --upgrade pip
+
+    - name: Install docker-py
+      pip:
+        name: docker
+        executable: pip3
 
     - name: Install docker-py
       pip3:
