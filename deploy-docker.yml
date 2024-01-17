@@ -4,8 +4,8 @@
   become_user: root
 
   vars:
-    docker_username: "{{ docker_username }}"
-    docker_password: "{{ docker_password }}"
+    docker_username: "{{ usr }}"
+    docker_password: "{{ pass }}"
     docker_image: maven_war:1.0
     docker_container_name: maven_war
 
