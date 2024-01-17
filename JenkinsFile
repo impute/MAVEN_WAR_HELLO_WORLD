@@ -2,6 +2,7 @@ pipeline{
     agent any
     tools {
       maven 'MVN_HOME'
+      jdk '/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.392.b08-2.e17_9.x86_64/jre/bin/java'
     }
 
     environment {
@@ -13,11 +14,7 @@ pipeline{
        stage('Maven Build') {
             steps {
                 echo 'Compile the source code'
-                withMaven(maven: 'maven-3', jdk: 'jdk-8') {
-                    // Use Maven to build the project
-                    sh 'mvn clean package'
-                }
-                //sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }                
        }
    
