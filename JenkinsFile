@@ -16,7 +16,7 @@ pipeline{
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
        }
-       
+/*       
       stage('Docker Build'){
             steps{
                 echo 'In this step you should build your docker image using the docker build command'
@@ -43,6 +43,6 @@ pipeline{
                 ansiblePlaybook credentialsId: 'docker-credentials', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
             }
         }        
+*/
     }
-    
 }
