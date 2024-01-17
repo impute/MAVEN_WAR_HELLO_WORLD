@@ -21,7 +21,7 @@
           - docker-buildx-plugin
           - docker-compose-plugin
           - epel-release
-          - python3-pip
+          - python-pip
         state: present    
         
     - name: Start Docker service using the systemd module
@@ -31,12 +31,11 @@
         enabled: yes    
 
     - name: Upgrade pip3
-      command: pip3 install --upgrade pip
+      command: pip install --upgrade pip
 
     - name: Install docker-py
       pip:
-        name: docker
-        executable: pip3
+        name: docker-py
 
     - name: pull docker image    
       docker_image:
