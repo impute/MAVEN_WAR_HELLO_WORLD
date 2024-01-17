@@ -1,3 +1,3 @@
 [dev]
 linuxclient1
-192.168.1.215 ansible_user=parallels
+192.168.1.25 ansible_user=parallels
