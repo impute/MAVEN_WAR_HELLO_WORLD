@@ -3,12 +3,6 @@
   become: True
   become_user: root
 
-  vars:
-    docker_username: "{{ usr }}"
-    docker_password: "{{ pass }}"
-    docker_image: maven_war:1.0
-    docker_container_name: maven_war
-
   tasks:
     - name: Install yum-utils (use the yum module)
       yum:
@@ -26,27 +20,29 @@
           - containerd.io
           - docker-buildx-plugin
           - docker-compose-plugin
-          - python36
-          - python36-devel
-          - python36-setuptools
-          - docker-py
+          - python-pip
         state: present    
-
+        
     - name: Start Docker service using the systemd module
       systemd:
         name: docker
         state: started
         enabled: yes    
-        
-    - name: log into docker hub registry using the docker_login module
-      docker_login:
-        username: "{{ docker_username }}"
-        password: "{{ docker_password }}"    
 
-    - name: Pull image and create the container using docker_container
+    - name: Install docker-py
+      pip:
+        name: docker
+        state: present    
+
+    - name: pull docker image    
+        docker_image:
+          name: imputed5/maven_war:1.0
+          source: pull
+          
+    - name: create the container using docker_container
       docker_container:
-        name: "{{ docker_container_name }}"
-        image: "{{ docker_image }}"
+        name: maven_war
+        image: imputed5/maven_war:1.0
         state: started
         ports:
          - "8080:8080"
