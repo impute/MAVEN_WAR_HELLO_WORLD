@@ -50,6 +50,7 @@ pipeline{
                     extraVars: [
                       usr: "${DOCKER_CREDENTIALS_USR}",
                       pass: "${DOCKER_CREDENTIALS_PSW}"
+                    ]
                 )
             }
         } 
